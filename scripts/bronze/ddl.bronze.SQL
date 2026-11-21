@@ -9,43 +9,51 @@ Script Purpose:
 ===============================================================================
 */
 
-IF OBJECT_ID('bronze.crm_cust_info', 'U') IS NOT NULL
-    DROP TABLE bronze.crm_cust_info;
-GO
+USE DataWarehouse;
 
-CREATE TABLE bronze.crm_cust_info (
+-- ==========================================
+-- 1. CRM CUSTOMER INFO
+-- ==========================================
+
+DROP TABLE IF EXISTS bronze_crm_cust_info;
+
+CREATE TABLE bronze_crm_cust_info (
     cst_id              INT,
-    cst_key             NVARCHAR(50),
-    cst_firstname       NVARCHAR(50),
-    cst_lastname        NVARCHAR(50),
-    cst_marital_status  NVARCHAR(50),
-    cst_gndr            NVARCHAR(50),
+    cst_key             VARCHAR(50),
+    cst_firstname       VARCHAR(50),
+    cst_lastname        VARCHAR(50),
+    cst_marital_status  VARCHAR(50),
+    cst_gndr            VARCHAR(50),
     cst_create_date     DATE
 );
-GO
 
-IF OBJECT_ID('bronze.crm_prd_info', 'U') IS NOT NULL
-    DROP TABLE bronze.crm_prd_info;
-GO
 
-CREATE TABLE bronze.crm_prd_info (
+-- ==========================================
+-- 2. CRM PRODUCT INFO
+-- ==========================================
+
+DROP TABLE IF EXISTS bronze_crm_prd_info;
+
+CREATE TABLE bronze_crm_prd_info (
     prd_id       INT,
-    prd_key      NVARCHAR(50),
-    prd_nm       NVARCHAR(50),
+    prd_key      VARCHAR(50),
+    prd_nm       VARCHAR(50),
     prd_cost     INT,
-    prd_line     NVARCHAR(50),
+    prd_line     VARCHAR(50),
     prd_start_dt DATETIME,
     prd_end_dt   DATETIME
 );
-GO
 
-IF OBJECT_ID('bronze.crm_sales_details', 'U') IS NOT NULL
-    DROP TABLE bronze.crm_sales_details;
-GO
 
-CREATE TABLE bronze.crm_sales_details (
-    sls_ord_num  NVARCHAR(50),
-    sls_prd_key  NVARCHAR(50),
+-- ==========================================
+-- 3. CRM SALES DETAILS
+-- ==========================================
+
+DROP TABLE IF EXISTS bronze_crm_sales_details;
+
+CREATE TABLE bronze_crm_sales_details (
+    sls_ord_num  VARCHAR(50),
+    sls_prd_key  VARCHAR(50),
     sls_cust_id  INT,
     sls_order_dt INT,
     sls_ship_dt  INT,
@@ -54,37 +62,42 @@ CREATE TABLE bronze.crm_sales_details (
     sls_quantity INT,
     sls_price    INT
 );
-GO
 
-IF OBJECT_ID('bronze.erp_loc_a101', 'U') IS NOT NULL
-    DROP TABLE bronze.erp_loc_a101;
-GO
 
-CREATE TABLE bronze.erp_loc_a101 (
-    cid    NVARCHAR(50),
-    cntry  NVARCHAR(50)
+-- ==========================================
+-- 4. ERP LOCATION
+-- ==========================================
+
+DROP TABLE IF EXISTS bronze_erp_loc_a101;
+
+CREATE TABLE bronze_erp_loc_a101 (
+    cid    VARCHAR(50),
+    cntry  VARCHAR(50)
 );
-GO
 
-IF OBJECT_ID('bronze.erp_cust_az12', 'U') IS NOT NULL
-    DROP TABLE bronze.erp_cust_az12;
-GO
 
-CREATE TABLE bronze.erp_cust_az12 (
-    cid    NVARCHAR(50),
+-- ==========================================
+-- 5. ERP CUSTOMER
+-- ==========================================
+
+DROP TABLE IF EXISTS bronze_erp_cust_az12;
+
+CREATE TABLE bronze_erp_cust_az12 (
+    cid    VARCHAR(50),
     bdate  DATE,
-    gen    NVARCHAR(50)
+    gen    VARCHAR(50)
 );
-GO
 
-IF OBJECT_ID('bronze.erp_px_cat_g1v2', 'U') IS NOT NULL
-    DROP TABLE bronze.erp_px_cat_g1v2;
-GO
 
-CREATE TABLE bronze.erp_px_cat_g1v2 (
-    id           NVARCHAR(50),
-    cat          NVARCHAR(50),
-    subcat       NVARCHAR(50),
-    maintenance  NVARCHAR(50)
+-- ==========================================
+-- 6. ERP PRODUCT CATEGORY
+-- ==========================================
+
+DROP TABLE IF EXISTS bronze_erp_px_cat_g1v2;
+
+CREATE TABLE bronze_erp_px_cat_g1v2 (
+    id           VARCHAR(50),
+    cat          VARCHAR(50),
+    subcat       VARCHAR(50),
+    maintenance  VARCHAR(50)
 );
-GO
