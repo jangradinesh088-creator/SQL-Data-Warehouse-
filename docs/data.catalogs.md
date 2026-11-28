@@ -65,12 +65,3 @@ The Gold Layer is the business-level data representation, structured to support 
 | price | INT | The price per unit of the product for the line item, in whole currency units (e.g., 25). |
 
 ---
-
-## MySQL Compatibility Notes
-
-- `NVARCHAR(50)` has been replaced with `VARCHAR(50)`.
-- `INT` remains `INT`.
-- `DATE` remains `DATE`.
-- All column names follow the Gold Layer data model.
-
-**Note:** This data dictionary documents the expected Gold Layer structure. Verify the actual column names and data types against your MySQL Gold Layer views before finalizing the documentation.
